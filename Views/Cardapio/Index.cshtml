@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Listagem do cardápio";
+}
+
+<div class="text-center">
+    <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+        <a class="btn btn-success" role="button" asp-controller="Cardapio" asp-action="AdicionarItem">Adicionar novo item</a>
+    </div>
+
+    <br/>
+    
+    <h1 class="display-4">Listagem do cardápio</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Preço (R$)</th>
+                <th scope="col">Opções</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>X-tudo</td>
+                <td>Lanches</td>
+                <td>23.99</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary" asp-controller="Cardapio" asp-action="EditarItem">Editar</a>
+                        <a role="button" class="btn btn-danger" asp-controller="Cardapio" asp-action="DeletarItem">Apagar</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Coca cola</td>
+                <td>Bebidas</td>
+                <td>6.50</td>
+                <td>
+                    <div class="btn-group" role="group">
+                        <a role="button" class="btn btn-primary" asp-controller="Cardapio" asp-action="EditarItem">Editar</a>
+                        <a role="button" class="btn btn-danger" asp-controller="Cardapio" asp-action="DeletarItem">Apagar</a>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
