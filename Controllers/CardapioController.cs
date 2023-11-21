@@ -45,15 +45,25 @@ namespace DeliveryApp.Controllers
         [HttpPost]
         public IActionResult AdicionarItem(CardapioModel item)
         {
-            _cardapioRepositorio.AdicionarItem(item);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _cardapioRepositorio.AdicionarItem(item);
+                return RedirectToAction("Index");
+            }
+            
+            return View(item);
         }
 
         [HttpPost]
         public IActionResult AtualizarItem(CardapioModel item)
         {
-            _cardapioRepositorio.AtualizarItem(item);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _cardapioRepositorio.AtualizarItem(item);
+                return RedirectToAction("Index");
+            }
+
+            return View("EditarItem", item);
         }
     }
 }
