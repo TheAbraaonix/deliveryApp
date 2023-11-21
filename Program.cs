@@ -1,3 +1,6 @@
+using DeliveryApp.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace DeliveryApp
 {
     public class Program
@@ -8,6 +11,11 @@ namespace DeliveryApp
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            builder.Services.AddDbContext<BancoContext>(options =>
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             var app = builder.Build();
 
