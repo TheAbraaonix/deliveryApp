@@ -24,9 +24,10 @@ namespace DeliveryApp.Controllers
             return View();
         }
 
-        public IActionResult EditarItem()
+        public IActionResult EditarItem(int id)
         {
-            return View();
+            CardapioModel item = _cardapioRepositorio.ListarPorId(id);
+            return View(item);
         }
 
         public IActionResult DeletarItem()
@@ -38,6 +39,13 @@ namespace DeliveryApp.Controllers
         public IActionResult AdicionarItem(CardapioModel item)
         {
             _cardapioRepositorio.AdicionarItem(item);
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult AtualizarItem(CardapioModel item)
+        {
+            _cardapioRepositorio.AtualizarItem(item);
             return RedirectToAction("Index");
         }
     }
