@@ -6,5 +6,5 @@
     <h3>Deseja apagar o item {item.nome} do cardápio?</h3>
 </div>
 
-<a class="btn btn-primary w-100" role="button">Cancelar</a>
-<a class ="btn btn-danger w-100" role="button">Apagar</a>
+<a class="btn btn-primary w-100" role="button" asp-controller="Cardapio" asp-action="Index">Cancelar</a>
+<a class ="btn btn-danger w-100" role="button" asp-controller="Cardapio" asp-action="DeletarItemConfirmacao">Apagar</a>
