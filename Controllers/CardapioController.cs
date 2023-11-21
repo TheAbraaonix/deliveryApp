@@ -38,32 +38,68 @@ namespace DeliveryApp.Controllers
 
         public IActionResult DeletarItemConfirmacao(int id)
         {
-            _cardapioRepositorio.DeletarItem(id);
-            return RedirectToAction("Index");
+            try
+            {
+                bool apagado = _cardapioRepositorio.DeletarItem(id);
+
+                if(apagado)
+                {
+                    TempData["MensagemSucesso"] = "Item apagado com sucesso.";
+                } 
+                else
+                {
+                    TempData["MensagemErro"] = "Não foi possível deletar o item do cardápio.";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Não foi possível apagar seu item do cardápio, tente novamente. Detalhe do erro: {ex.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         [HttpPost]
         public IActionResult AdicionarItem(CardapioModel item)
         {
-            if(ModelState.IsValid)
+            try
             {
-                _cardapioRepositorio.AdicionarItem(item);
+                if (ModelState.IsValid)
+                {
+                    _cardapioRepositorio.AdicionarItem(item);
+                    TempData["MensagemSucesso"] = "Item criado com sucesso.";
+                    return RedirectToAction("Index");
+                }
+
+                return View(item);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Não foi possível cadastar seu item ao cardápio, tente novamente. Detalhe do erro: {ex.Message}";
                 return RedirectToAction("Index");
             }
-            
-            return View(item);
         }
 
         [HttpPost]
         public IActionResult AtualizarItem(CardapioModel item)
         {
-            if(ModelState.IsValid)
+            try
             {
-                _cardapioRepositorio.AtualizarItem(item);
+                if (ModelState.IsValid)
+                {
+                    _cardapioRepositorio.AtualizarItem(item);
+                    TempData["MensagemSucesso"] = "Item alterado com sucesso.";
+                    return RedirectToAction("Index");
+                }
+
+                return View("EditarItem", item);
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Não foi possível atualizar seu item do cardápio, tente novamente. Detalhe do erro: {ex.Message}";
                 return RedirectToAction("Index");
             }
-
-            return View("EditarItem", item);
         }
     }
 }
