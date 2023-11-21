@@ -12,6 +12,11 @@ namespace DeliveryApp.Repositorio
             _bancoContext = bancoContext;
         }
 
+        public List<CardapioModel> BuscarTodos()
+        {
+            return _bancoContext.Cardapio.ToList();
+        }
+
         public CardapioModel AdicionarItem(CardapioModel item)
         {
             _bancoContext.Cardapio.Add(item);

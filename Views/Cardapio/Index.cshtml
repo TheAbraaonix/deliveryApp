@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<CardapioModel>
+@{
     ViewData["Title"] = "Listagem do cardápio";
 }
 
@@ -22,30 +23,24 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>X-tudo</td>
-                <td>Lanches</td>
-                <td>23.99</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Cardapio" asp-action="EditarItem">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Cardapio" asp-action="DeletarItem">Apagar</a>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Coca cola</td>
-                <td>Bebidas</td>
-                <td>6.50</td>
-                <td>
-                    <div class="btn-group" role="group">
-                        <a role="button" class="btn btn-primary" asp-controller="Cardapio" asp-action="EditarItem">Editar</a>
-                        <a role="button" class="btn btn-danger" asp-controller="Cardapio" asp-action="DeletarItem">Apagar</a>
-                    </div>
-                </td>
-            </tr>
+            @if(Model != null && Model.Any())
+            {
+                foreach(CardapioModel item in Model)
+                {
+                    <tr>
+                        <th scope="row">@item.Id</th>
+                        <td>@item.Nome</td>
+                        <td>@item.Categoria</td>
+                        <td>@item.Preco</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-route-id="@item.Id" asp-controller="Cardapio" asp-action="EditarItem">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-route-id="@item.Id" asp-controller="Cardapio" asp-action="DeletarItem">Apagar</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>

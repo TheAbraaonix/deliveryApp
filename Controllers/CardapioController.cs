@@ -15,7 +15,8 @@ namespace DeliveryApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            List<CardapioModel> itens = _cardapioRepositorio.BuscarTodos();
+            return View(itens);
         }
 
         public IActionResult AdicionarItem()
