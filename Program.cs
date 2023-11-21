@@ -1,4 +1,5 @@
 using DeliveryApp.Data;
+using DeliveryApp.Repositorio;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryApp
@@ -16,6 +17,8 @@ namespace DeliveryApp
 
             builder.Services.AddDbContext<BancoContext>(options =>
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
+
+            builder.Services.AddScoped<ICardapioRepositorio, CardapioRepositorio>();
 
             var app = builder.Build();
 
