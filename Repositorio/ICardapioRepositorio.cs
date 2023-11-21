@@ -11,5 +11,7 @@ namespace DeliveryApp.Repositorio
         CardapioModel AdicionarItem(CardapioModel item);
 
         CardapioModel AtualizarItem(CardapioModel item);
+
+        bool DeletarItem(int id);
     }
 }

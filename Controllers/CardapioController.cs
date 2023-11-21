@@ -30,9 +30,16 @@ namespace DeliveryApp.Controllers
             return View(item);
         }
 
-        public IActionResult DeletarItem()
+        public IActionResult DeletarItem(int id)
         {
-            return View();
+            CardapioModel item = _cardapioRepositorio.ListarPorId(id);
+            return View(item);
+        }
+
+        public IActionResult DeletarItemConfirmacao(int id)
+        {
+            _cardapioRepositorio.DeletarItem(id);
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

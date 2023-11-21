@@ -46,5 +46,20 @@ namespace DeliveryApp.Repositorio
             _bancoContext.SaveChanges();
             return itemDb;
         }
+
+        public bool DeletarItem(int id)
+        {
+            CardapioModel itemDb = ListarPorId(id);
+
+            if (itemDb == null)
+            {
+                throw new Exception("Houve um erro na deleção do item do cardápio.");
+            }
+
+
+            _bancoContext.Cardapio.Remove(itemDb);
+            _bancoContext.SaveChanges();
+            return true;
+        }
     }
 }
