@@ -10,5 +10,6 @@ namespace DeliveryApp.Data
         }
 
         public DbSet<CardapioModel> Cardapio { get; set; }
+        public DbSet<UsuarioModel> Usuarios { get; set; }
     }
 }
