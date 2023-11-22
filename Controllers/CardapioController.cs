@@ -1,5 +1,5 @@
 ﻿using DeliveryApp.Models;
-using DeliveryApp.Repositorio;
+using DeliveryApp.Repositorio.Cardapio;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DeliveryApp.Controllers

@@ -1,5 +1,6 @@
 using DeliveryApp.Data;
-using DeliveryApp.Repositorio;
+using DeliveryApp.Repositorio.Cardapio;
+using DeliveryApp.Repositorio.Usuario;
 using Microsoft.EntityFrameworkCore;
 
 namespace DeliveryApp
@@ -19,6 +20,7 @@ namespace DeliveryApp
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             builder.Services.AddScoped<ICardapioRepositorio, CardapioRepositorio>();
+            builder.Services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
 
             var app = builder.Build();
 

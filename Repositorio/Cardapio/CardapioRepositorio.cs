@@ -1,7 +1,7 @@
 ﻿using DeliveryApp.Data;
 using DeliveryApp.Models;
 
-namespace DeliveryApp.Repositorio
+namespace DeliveryApp.Repositorio.Cardapio
 {
     public class CardapioRepositorio : ICardapioRepositorio
     {
@@ -33,7 +33,7 @@ namespace DeliveryApp.Repositorio
         {
             CardapioModel itemDb = ListarPorId(item.Id);
 
-            if(itemDb ==  null)
+            if (itemDb == null)
             {
                 throw new Exception("Houve um erro na atualização do item do cardápio.");
             }
