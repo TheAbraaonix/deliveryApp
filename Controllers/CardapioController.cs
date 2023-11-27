@@ -80,26 +80,5 @@ namespace DeliveryApp.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-        [HttpPost]
-        public IActionResult AtualizarItem(CardapioModel item)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    _cardapioRepositorio.AtualizarItem(item);
-                    TempData["MensagemSucesso"] = "Item alterado com sucesso.";
-                    return RedirectToAction("Index");
-                }
-
-                return View("EditarItem", item);
-            }
-            catch (Exception ex)
-            {
-                TempData["MensagemErro"] = $"Não foi possível atualizar seu item do cardápio, tente novamente. Detalhe do erro: {ex.Message}";
-                return RedirectToAction("Index");
-            }
-        }
     }
 }
