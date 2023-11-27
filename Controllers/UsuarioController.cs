@@ -25,6 +25,36 @@ namespace DeliveryApp.Controllers
             return View();
         }
 
+        public IActionResult DeletarUsuario(int id)
+        {
+            UsuarioModel usuario = _usuarioRepositorio.ListarPorId(id);
+            return View(usuario);
+        }
+
+        public IActionResult DeletarUsuarioConfirmacao(int id)
+        {
+            try
+            {
+                bool apagado = _usuarioRepositorio.DeletarUsuario(id);
+
+                if (apagado)
+                {
+                    TempData["MensagemSucesso"] = "Usuário apagado com sucesso.";
+                }
+                else
+                {
+                    TempData["MensagemErro"] = "Não foi possível deletar o usuário.";
+                }
+
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["MensagemErro"] = $"Não foi possível apagar o usuário, tente novamente. Detalhe do erro: {ex.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
         [HttpPost]
         public IActionResult AdicionarUsuario(UsuarioModel usuario)
         {
