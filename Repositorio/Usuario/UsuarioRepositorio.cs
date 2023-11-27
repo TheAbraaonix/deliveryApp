@@ -13,6 +13,11 @@ namespace DeliveryApp.Repositorio.Usuario
             _bancoContext = bancoContext;
         }
 
+        public UsuarioModel BuscarPorEmail(string email)
+        {
+            return _bancoContext.Usuarios.FirstOrDefault(x => x.Email == email);
+        }
+
         public UsuarioModel ListarPorId(int id)
         {
             return _bancoContext.Usuarios.FirstOrDefault(x => x.Id == id);

@@ -4,6 +4,8 @@ namespace DeliveryApp.Repositorio.Usuario
 {
     public interface IUsuarioRepositorio
     {
+        UsuarioModel BuscarPorEmail(string email);
+        
         UsuarioModel ListarPorId(int id);
 
         List<UsuarioModel> BuscarTodos();
